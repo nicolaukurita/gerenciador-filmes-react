@@ -4,6 +4,7 @@ import { Menu } from "./components/menu";
 import { Topbanner } from "./components/topbanner";
 import { Topbar } from "./components/topbar";
 import './global.css';
+import { Home } from "./pages/home";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Topbanner />
       <MainBody>
         <Menu />
+        <Home />
       </MainBody>
       <Footer />
     </>
