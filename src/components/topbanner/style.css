@@ -2,6 +2,7 @@ div.topbanner{
     background-color: #efefef;
     height: 200px;
     padding-left: 10px;
+    padding-top: 10px;
 }
 
 center.topbanner{
@@ -13,3 +14,9 @@ center.topbanner{
     text-align: center;
     width: 99%;
 }   
+
+@media (max-width: 1120px) {
+    img.topbanner{
+        display: none;
+    }
+}
