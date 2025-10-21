@@ -1,10 +1,10 @@
 import "./style.css"
 
-export function Home() {
+export function Films() {
     return (
         <div className="content">
-            <h1>Home</h1>
-            <div>Conteudo</div>
+            <h1>FILMES</h1>
+            <div>Conteudo</div>  
         </div>
     );
 }

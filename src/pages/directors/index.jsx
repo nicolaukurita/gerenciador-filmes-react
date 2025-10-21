@@ -1,9 +1,7 @@
-import "./style.css"
-
-export function Home() {
+export function Directors() {
     return (
         <div className="content">
-            <h1>Home</h1>
+            <h1>Diretores</h1>
             <div>Conteudo</div>
         </div>
     );
