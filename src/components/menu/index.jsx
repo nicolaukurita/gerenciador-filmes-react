@@ -6,9 +6,9 @@ export function Menu() {
         <div className="menu">
             <nav className="menu">
                 <Link to="/" className="menu">Home</Link>
-                <Link to="/" className="menu">Filmes</Link>
-                <Link to="/" className="menu">Diretores</Link>
-                <Link to="/" className="menu">Atores</Link>
+                <Link to="/films" className="menu">Filmes</Link>
+                <Link to="/directors" className="menu">Diretores</Link>
+                <Link to="/actors" className="menu">Atores</Link>
             </nav>
         </div>
     );
