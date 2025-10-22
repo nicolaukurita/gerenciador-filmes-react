@@ -1,8 +1,35 @@
 import "./style.css"
 import { BsFilePlusFill as PlusIcon } from "react-icons/bs";
 import { BsFileMinusFill as MinusIcon } from "react-icons/bs";
+import { useState } from "react";
+
+function decreaseCastSize(castSize, setCastSize) {
+    if (castSize > 1) {
+        setCastSize(castSize - 1);
+    }
+}
+function createcastInputs(castSize, setCastSize) {
+
+    var content = [];
+
+    for (var i = 0; i < castSize; i++) {
+        content.push(
+            (
+                <p className="home-form" key={i}>
+                    <input className="home-form" type="text" size={40} placeholder="Nome do ator" />
+                    <MinusIcon size={25} className="home-form-icon" onClick={() => decreaseCastSize(castSize, setCastSize)} />
+                    <PlusIcon size={25} className="home-form-icon" onClick={() => setCastSize(castSize + 1)} />
+                </p>
+            )
+        )
+    }
+    return content;
+}
 
 export function Home() {
+
+    const [castSize, setCastSize] = useState(1);
+
     return (
         <div className="content">
             <h1>Home</h1>
@@ -13,12 +40,10 @@ export function Home() {
                 <p className="home-form"><input className="home-form" type="text" size={10} placeholder="Nota" /></p>
 
                 <h3 className="home-form">Elenco:</h3>
-                <p className="home-form">
-                    <div><input className="home-form" type="text" size={40} placeholder="Nome do ator" /></div>
-                    <div><MinusIcon size={25} className="home-form-icon" /></div>
-                    <div><PlusIcon size={25} className="home-form-icon" /></div>
-                </p>
-
+                
+                {createcastInputs(castSize, setCastSize)}
+                
+                <p className="home-form"><input type="submit" className="home-form-button" value="Cadastrar novo filme" /></p>
             </div>
         </div>
     );

@@ -1,36 +1,54 @@
-div.home-form{
+div.home-form {
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-h3.home-form{
- font-size: 16px;
+h3.home-form {
+    font-size: 16px;
 }
-p.home-form{
+
+p.home-form {
     padding-left: 10px;
     padding-right: 10px;
     display: flex;
 }
 
-input.home-form{
- padding: 5px ;
- color: #707070;
- font-size: 14px;
- border-color: #707070;
- border-width: 1px;
+input.home-form {
+    padding: 5px;
+    color: #707070;
+    font-size: 14px;
+    border-color: #707070;
+    border-width: 1px;
 }
 
- .home-form-icon{
+.home-form-icon {
     color: #333;
- }
+}
 
- .home-form-icon:hover{
+.home-form-icon:hover {
     color: #707070;
     scale: 1.1;
- }
+}
 
- .home-form-icon:active{
+.home-form-icon:active {
     scale: 1.1;
- }
- 
+}
+
+input.home-form-button {
+    background-color: #333;
+    color: #e2e2e2;
+    height: 30px;
+    box-sizing: border-box;
+    border: 0px;
+    padding: 10px;
+}
+
+input.home-form-button:hover {
+    background-color: #707070;
+}
+
+input.home-form-button:active {
+    scale: 1.05;
+    outline: 2px solid #6cf;
+}
