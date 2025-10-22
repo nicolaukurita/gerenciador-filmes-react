@@ -1,0 +1,14 @@
+div.film-content{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+div.cards{
+    display: flex;
+    block-size: border-box;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    place-content: initial;
+    max-width: 1337px;
+}
