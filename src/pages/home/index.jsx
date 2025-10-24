@@ -2,6 +2,8 @@ import "./style.css"
 import { BsFilePlusFill as PlusIcon } from "react-icons/bs";
 import { BsFileMinusFill as MinusIcon } from "react-icons/bs";
 import { useState } from "react";
+import { BACKEND_URL } from "../../config";
+import axios from "axios";
 
 function decreaseCastSize(castSize, setCastSize) {
     if (castSize > 1) {
@@ -26,7 +28,18 @@ function createcastInputs(castSize, setCastSize) {
     return content;
 }
 
-function formHandle(event) {
+function formDataToJsonMapper(film, director, grade, actors) {
+    let newData = {
+        nome: film,
+        diretor: { nome: director },
+        nota: grade,
+        elenco: actors.map(actor => ({ nome: actor }))
+    };
+
+    return JSON.stringify(newData);
+}
+
+async function formHandle(event) {
     event.preventDefault();
 
     const film = event.target.film.value;
@@ -36,10 +49,10 @@ function formHandle(event) {
     const actors = Array.from(event.target.actor).map(actor => actor.value);
 
     console.log({ film, director, grade, actors });
-    console.log(actors);
-    console.log(director);
-    console.log(film);
-    console.log(grade);
+    const jsonData = formDataToJsonMapper(film, director, grade, actors);
+
+    const axiosConfig = { headers: { 'Content-Type': 'application/json' } };
+    axios.post(BACKEND_URL + "/filmes", jsonData, axiosConfig);
 }
 
 export function Home() {
@@ -50,7 +63,7 @@ export function Home() {
         <div className="content">
             <h1>Home</h1>
             <div className="home-form">
-                <form onSubmit={formHandle}>
+                <form onSubmit={async (e) => await formHandle(e)}>
                     <h3 className="home-form">Inserir novo filme:</h3>
                     <p className="home-form"><input className="home-form" type="text" size={40} name="film" placeholder="Nome do Filme" /></p>
                     <p className="home-form"><input className="home-form" type="text" size={40} name="director" placeholder="Diretor" /></p>
