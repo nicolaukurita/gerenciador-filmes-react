@@ -39,7 +39,7 @@ function formDataToJsonMapper(film, director, grade, actors) {
     return JSON.stringify(newData);
 }
 
-async function formHandle(event) {
+async function formHandle(event, setMessage) {
     event.preventDefault();
 
     const film = event.target.film.value;
@@ -48,22 +48,31 @@ async function formHandle(event) {
 
     const actors = Array.from(event.target.actor).map(actor => actor.value);
 
-    console.log({ film, director, grade, actors });
     const jsonData = formDataToJsonMapper(film, director, grade, actors);
+    console.log({ jsonData });
 
     const axiosConfig = { headers: { 'Content-Type': 'application/json' } };
-    axios.post(BACKEND_URL + "/filmes", jsonData, axiosConfig);
+
+    try {
+        await axios.post(BACKEND_URL + "/filmes", jsonData, axiosConfig);
+        setMessage("Filme cadastrado com sucesso!");
+    } catch (error) {
+        console.log(error);
+        setMessage("Erro ao cadastrar O filme " + film + ": " + error.message)
+    }
 }
 
 export function Home() {
 
     const [castSize, setCastSize] = useState(1);
+    const [submitMessage, setSubmitMessage] = useState("");
 
     return (
         <div className="content">
             <h1>Home</h1>
+            {submitMessage}
             <div className="home-form">
-                <form onSubmit={async (e) => await formHandle(e)}>
+                <form onSubmit={async (e) => await formHandle(e, setSubmitMessage)}>
                     <h3 className="home-form">Inserir novo filme:</h3>
                     <p className="home-form"><input className="home-form" type="text" size={40} name="film" placeholder="Nome do Filme" /></p>
                     <p className="home-form"><input className="home-form" type="text" size={40} name="director" placeholder="Diretor" /></p>
